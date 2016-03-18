@@ -15,9 +15,15 @@ public class Recta {
     }
 
     public static Punto interseccion(final Recta recta1, final Recta recta2) {
+        validateParalelismo(recta1, recta2);
         double x = (recta2.getConstanteB() - recta1.getConstanteB()) / (recta1.getPendiente() - recta2.getPendiente());
         double y = recta1.getPendiente() * x + recta1.getConstanteB();
         return new Punto(x, y);
+    }
+
+    private static void validateParalelismo(final Recta recta1, final Recta recta2) {
+        if(Double.compare(recta1.getPendiente(), recta2.getPendiente()) == 0)
+            throw new CouldNotInterceptedException("Las rectas son paralelas");
     }
 
     public double calcularConstanteB() {
