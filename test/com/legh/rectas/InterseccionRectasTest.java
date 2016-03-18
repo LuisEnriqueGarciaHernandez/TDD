@@ -33,6 +33,16 @@ public class InterseccionRectasTest {
         expected.expectMessage("Las rectas son paralelas");
         Recta recta1 = new Recta(new Punto(1.0, 1.0), new Punto(4.0, 2.0));
         Recta recta2 = new Recta(new Punto(1.0, 1.0), new Punto(4.0, 2.0));
-        Punto interseccion = Recta.interseccion(recta1, recta2);
+        Recta.interseccion(recta1, recta2);
     }
+
+    @Test
+    public void encuentraLaInterseccionEntreUnaRectaVerticalYCualquierOtra() {
+        Recta recta1 = new Recta(new Punto(4.0, 1.0), new Punto(4.0, 2.0));
+        Recta recta2 = new Recta(new Punto(5.0, 1.0), new Punto(4.0, 2.0));
+        Punto interseccion = Recta.interseccion(recta1, recta2);
+        Assert.assertThat(interseccion.getX(), Is.is(4.0));
+        Assert.assertThat(interseccion.getY(), Is.is(2.0));
+    }
+
 }
