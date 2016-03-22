@@ -17,9 +17,9 @@ public class Recta {
     public static Punto interseccion(final Recta recta1, final Recta recta2) {
         validaParalelismo(recta1, recta2);
         if (isVertical(recta1))
-            return calculaPuntoXEnRecta(recta2, recta1.punto1.getX());
+            return calculaPuntoDeRectaParaXIgualA(recta2, recta1.punto1.getX());
         else if (isVertical(recta2))
-            return calculaPuntoXEnRecta(recta1, recta2.punto1.getX());
+            return calculaPuntoDeRectaParaXIgualA(recta1, recta2.punto1.getX());
         else {
             return calculaInterseccionRectasNoVerticales(recta1, recta2);
         }
@@ -31,7 +31,7 @@ public class Recta {
         return new Punto(x, y);
     }
 
-    private static Punto calculaPuntoXEnRecta(final Recta recta, final double x) {
+    private static Punto calculaPuntoDeRectaParaXIgualA(final Recta recta, final double x) {
         double y = recta.getPendiente() * x + recta.getConstanteB();
         return new Punto(x, y);
     }
